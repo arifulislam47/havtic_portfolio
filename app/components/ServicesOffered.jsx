@@ -10,10 +10,14 @@ import { LuSquareCode } from "react-icons/lu";
 import { MdOutlineDesignServices } from "react-icons/md";
 import Marquee from "react-fast-marquee";
 import { IoReturnDownForward } from "react-icons/io5";
+import { usePathname } from "next/navigation";
 
 const ServicesOffered = () => {
+
+  let pathName = usePathname()
+
   return (
-    <Container className={`mt-6 `}>
+    <Container className={`mt-6 ${pathName === "/" ? "" : "hidden"} `}>
       <div className=" grid grid-cols-3  gap-6">
         <div className="shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] col-span-2 bg-white dark:bg-black p-6 rounded-2xl">
           <div className="jb pb-[8px]">

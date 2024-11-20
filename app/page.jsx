@@ -93,7 +93,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] h-[700px] col-span-1 border border-gray-100 dark:border-gray-800 px-[24px] py-6 rounded-2xl bg-white dark:bg-black">
+      <div className="shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] col-span-1 border border-gray-100 dark:border-gray-800 px-[24px] py-6 rounded-2xl bg-white dark:bg-black">
         <div className="jb pb-[8px]">
           <h2 className="text-[24px]  bg-white dark:bg-black text-black dark:text-white mb-2">
             Recent Projects
@@ -109,13 +109,16 @@ export default function Home() {
         <div className=" grid grid-rows-2 grid-flow-row justify-center gap-y-6 h-[px]">
           <div className=" row-span-1 bg-gray-100 dark:bg-gray-900 rounded-lg p-6 relative overflow-hidden">
             <div className="w-full h-full rounded-lg overflow-hidden ">
-              <Link href={"https://dashboard-zeta-taupe.vercel.app/"}>
+              <Link
+                target="blank"
+                href={"https://dashboard-zeta-taupe.vercel.app/"}
+              >
                 <Image
                   src="/Projectone.png"
                   alt="Picture of the author"
-                  layout="responsive" // Ensures the image scales with the parent container
-                  width={16} // Aspect ratio width
-                  height={9} // Aspect ratio height
+                  layout="responsive"
+                  width={16}
+                  height={9}
                 />
               </Link>
             </div>
@@ -126,13 +129,13 @@ export default function Home() {
           </div>
           <div className=" row-span-1 bg-gray-100 dark:bg-gray-900 rounded-lg p-6 relative overflow-hidden">
             <div className="w-full h-full rounded-lg overflow-hidden  ">
-              <Link href={"/"}>
+              <Link target="blank" href={"https://techstore-gamma.vercel.app/"}>
                 <Image
                   src="/Project02.png"
                   alt="Picture of the author"
-                  layout="responsive" // Ensures the image scales with the parent container
-                  width={16} // Aspect ratio width
-                  height={9} // Aspect ratio height
+                  layout="responsive"
+                  width={16}
+                  height={9}
                 />
               </Link>
             </div>

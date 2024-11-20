@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Container from "./Container";
 import { FaUserTie } from "react-icons/fa6";
@@ -9,12 +9,69 @@ import { TbPhoneCall } from "react-icons/tb";
 import { IoCopyOutline } from "react-icons/io5";
 import { FaFacebook, FaGithub } from "react-icons/fa";
 import { MdOutgoingMail } from "react-icons/md";
+import { ToastContainer, toast, Flip } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { usePathname } from "next/navigation";
 
 const ProfileCard = () => {
-  
+  const [windowSize, setWindowSize] = useState({
+    width: 0,
+    height: 0,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  console.log("Window Width=" + windowSize.width);
+
+  let pathName = usePathname();
+
+  const handleCopyEmail = () => {
+    const email = "freelancerarif68@gmail.com";
+    navigator.clipboard
+      .writeText(email)
+      .then(() => {
+        toast.success("Copy Email success!", {
+          position: "bottom-left",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Flip,
+        });
+      })
+      .catch((err) => {
+        console.error("Failed to copy email: ", err);
+      });
+  };
 
   return (
-    <div className={''}>
+    <div
+      className={` ${
+        (pathName === "/about" || pathName === "/services") &&
+        windowSize.width !== 1536 &&
+        windowSize.width !== 1707
+          ? "fixed"
+          : ""
+      } `}
+    >
       <Container className={""}>
         <div className="shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] dark:border-gray-800 border border-gray-100 w-[416px] rounded-2xl overflow-hidden p-[24px] bg-white dark:bg-black">
           {/* Image Section */}
@@ -56,12 +113,12 @@ const ProfileCard = () => {
                 <TbPhoneCall /> Book A Call
               </Link>
 
-              <Link
-                href="tel:+1234567890"
-                className="px-6 py-4 border border-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 text-black dark:text-gray-400 dark:border-gray-400 font-medium rounded-2xl flex items-center gap-2"
+              <div
+                onClick={handleCopyEmail}
+                className="px-6 cursor-pointer py-4 border border-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 text-black dark:text-gray-400 dark:border-gray-700 font-medium rounded-2xl flex items-center gap-2"
               >
                 <IoCopyOutline /> Copy Email
-              </Link>
+              </div>
             </div>
             {/* Social Accounts */}
             <div className="flex gap-3 mt-6">
@@ -84,6 +141,7 @@ const ProfileCard = () => {
           </div>
         </div>
       </Container>
+      <ToastContainer />
     </div>
   );
 };

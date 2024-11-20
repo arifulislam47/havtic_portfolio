@@ -14,29 +14,25 @@
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .jb {
+    @apply flex justify-between items-center;
+  }
+
+  .fi,
+  .fc {
+    @apply flex items-center;
+  }
+
+  .cc {
+    @apply flex justify-center items-center;
+  }
 }
 
-.jb {
-  @apply flex justify-between items-center;
-}
-
-.fi,.fc {
-  @apply flex items-center;
-}
-
-.cc {
-  @apply flex justify-center items-center;
-}
-
-.slick-slider .slick-list{
+.slick-slider .slick-list {
   height: 250px !important;
 }
 
 .filter-blur {
   filter: blur(4px);
 }
-

@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 const Cursor = () => {
   const cursorRef = useRef(null);
 
+
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (cursorRef.current) {

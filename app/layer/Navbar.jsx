@@ -11,11 +11,13 @@ import { BiMessageAltDots } from "react-icons/bi";
 import { MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
 import { IoReturnDownForward } from "react-icons/io5";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   let [active, setActive] = useState(1);
   const [isScrolled, setIsScrolled] = useState(false);
   const [theme, setTheme] = useState("light");
+  let pathName = usePathname();
 
   useEffect(() => {
     if (localStorage.theme === "dark") {
@@ -87,12 +89,11 @@ const Navbar = () => {
             <li>
               <Link
                 className={` flex items-center gap-1 py-[8px] px-[10px] transition-all duration-300 rounded-md ${
-                  active === 1
+                  pathName === "/"
                     ? "dark:bg-gray-900 dark:text-white bg-gray-200 text-gray-800"
                     : "dark:hover:bg-gray-900 hover:bg-gray-200 hover:text-gray-800 dark:hover:text-white text-gray-500"
                 } `}
                 href={"/"}
-                onClick={() => setActive(1)}
               >
                 <TbSmartHome className=" text-[18px]" /> Home
               </Link>
@@ -100,12 +101,11 @@ const Navbar = () => {
             <li>
               <Link
                 className={` flex items-center gap-1 py-[8px] px-[10px] transition-all duration-300 rounded-md ${
-                  active === 2
+                  pathName === "/about"
                     ? "dark:bg-gray-900 dark:text-white bg-gray-200 text-gray-800"
                     : "dark:hover:bg-gray-900 hover:bg-gray-200 hover:text-gray-800 dark:hover:text-white text-gray-400"
                 } `}
                 href={"/about"}
-                onClick={() => setActive(2)}
               >
                 <PiUserSquare className=" text-[18px]" /> About
               </Link>
@@ -113,12 +113,11 @@ const Navbar = () => {
             <li>
               <Link
                 className={` flex items-center gap-1 py-[8px] px-[10px] transition-all duration-300 rounded-md ${
-                  active === 3
+                  pathName === "/services"
                     ? "dark:bg-gray-900 dark:text-white bg-gray-200 text-gray-800"
                     : "dark:hover:bg-gray-900 hover:bg-gray-200 hover:text-gray-800 dark:hover:text-white text-gray-400"
                 } `}
-                href={"/"}
-                onClick={() => setActive(3)}
+                href={"/services"}
               >
                 <FiLayers className=" text-[17px]" /> Services
               </Link>
@@ -126,12 +125,11 @@ const Navbar = () => {
             <li>
               <Link
                 className={` flex items-center gap-1 py-[8px] px-[10px] transition-all duration-300 rounded-md ${
-                  active === 4
+                  pathName === "/project"
                     ? "dark:bg-gray-900 dark:text-white bg-gray-200 text-gray-800"
                     : "dark:hover:bg-gray-900 hover:bg-gray-200 hover:text-gray-800 dark:hover:text-white text-gray-400"
                 } `}
-                href={"/"}
-                onClick={() => setActive(4)}
+                href={"/project"}
               >
                 <IoCodeWorkingSharp className=" text-[18px]" /> Project
               </Link>
@@ -139,12 +137,11 @@ const Navbar = () => {
             <li>
               <Link
                 className={` flex items-center gap-1 py-[8px] px-[10px] transition-all duration-300 rounded-md ${
-                  active === 5
+                  pathName === "/contact"
                     ? "dark:bg-gray-900 dark:text-white bg-gray-200 text-gray-800"
                     : "dark:hover:bg-gray-900 hover:bg-gray-200 hover:text-gray-800 dark:hover:text-white text-gray-400"
                 } `}
-                href={"/"}
-                onClick={() => setActive(5)}
+                href={"/contact"}
               >
                 <BiMessageAltDots className=" text-[18px]" /> Contact
               </Link>
